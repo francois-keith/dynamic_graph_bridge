@@ -28,8 +28,6 @@ namespace dynamicgraph
 
     explicit Interpreter (ros::NodeHandle& nodeHandle);
 
-    /// \brief Run a command and return result.
-    std::string runCommand (const std::string& command) __attribute__ ((deprecated));
     /// \brief Method to start python interpreter and deal with messages.
     /// \param Command string to execute, result, stdout, stderr strings.
     void runCommand(const std::string & command, std::string &result,
@@ -37,7 +35,7 @@ namespace dynamicgraph
 
     /// \brief Method to parse python scripts.
     /// \param Input file name to parse.
-    void runPythonFile(std::string ifilename);
+    void runPythonFile(std::string ifilename, std::string &err);
 
     /// Initialize service run_command
     void startRosService ();

@@ -30,7 +30,7 @@ add_required_dependency(bullet)
 
 add_required_dependency(jrl-mal)
 add_required_dependency(dynamic-graph)
-add_required_dependency(dynamic-graph-python)
+add_required_dependency(dynamic-graph-python >= 2.5.5-16")
 add_required_dependency(sot-core)
 add_required_dependency(sot-dynamic)
 add_required_dependency("jrl-dynamics-urdf >= 2.0.1-14")

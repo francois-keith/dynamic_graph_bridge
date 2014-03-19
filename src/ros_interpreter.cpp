@@ -38,16 +38,8 @@ namespace dynamicgraph
   Interpreter::runPythonFileCallback (dynamic_graph_bridge_msgs::RunPythonFile::Request& req,
                                       dynamic_graph_bridge_msgs::RunPythonFile::Response& res)
   {
-    interpreter_.runPythonFile(req.input);
-    res.result = "File parsed"; // FIX: It is just an echo, is there a way to have a feedback?
+    interpreter_.runPythonFile(req.input, res.result);
     return true;
-  }
-
-  std::string
-  Interpreter::runCommand
-  (const std::string& command)
-  {
-    return interpreter_.python(command);
   }
 
   void Interpreter::runCommand
@@ -59,8 +51,9 @@ namespace dynamicgraph
     interpreter_.python(command, result, out, err);
   }
 
-  void Interpreter::runPythonFile( std::string ifilename ){
-      interpreter_.runPythonFile(ifilename);
+  void Interpreter::runPythonFile( std::string ifilename,
+                                   std::string &err){
+      interpreter_.runPythonFile(ifilename, err);
   }
 
 } // end of namespace dynamicgraph.
