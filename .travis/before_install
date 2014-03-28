@@ -32,11 +32,13 @@ sudo apt-get install -qq	\
     gfortran			\
     python-dev			\
     python-sphinx		\
-    python-numpy
+    python-numpy    \
+    libbullet-dev
 
 
 sudo apt-get install -qq		\
     ros-$ROS_VERSION-ros-base		\
+    ros-$ROS_VERSION-ros-control	\
     ros-$ROS_VERSION-control-msgs	\
     ros-$ROS_VERSION-common-rosdeps	\
     ros-$ROS_VERSION-bullet		\
