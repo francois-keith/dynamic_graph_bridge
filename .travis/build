@@ -53,8 +53,8 @@ install_dependency stack-of-tasks/dynamic-graph-python
 install_dependency stack-of-tasks/sot-core
 install_dependency stack-of-tasks/sot-tools
 install_dependency stack-of-tasks/sot-dynamic
-
 install_ros_stack stack-of-tasks/redundant_manipulator_control
+install_dependency laas/jrl_dynamics_urdf
 
 cd "$root_dir"
 export ROS_PACKAGE_PATH="$root_dir:$ROS_PACKAGE_PATH"
