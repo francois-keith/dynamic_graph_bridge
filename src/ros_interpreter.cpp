@@ -8,7 +8,8 @@ namespace dynamicgraph
     : interpreter_ (),
       nodeHandle_ (nodeHandle),
       runCommandSrv_ (),
-      runPythonFileSrv_ ()
+      runPythonFileSrv_ (),
+      mutex_(new boost::interprocess::interprocess_mutex() )
   {
   }
 
@@ -30,7 +31,10 @@ namespace dynamicgraph
   (dynamic_graph_bridge_msgs::RunCommand::Request& req,
    dynamic_graph_bridge_msgs::RunCommand::Response& res)
   {
+    while(! mutex_->try_lock() ){}
     interpreter_.python(req.input, res.result, res.stdout, res.stderr);
+    mutex_->unlock();
+
     return true;
   }
 
@@ -38,7 +42,9 @@ namespace dynamicgraph
   Interpreter::runPythonFileCallback (dynamic_graph_bridge_msgs::RunPythonFile::Request& req,
                                       dynamic_graph_bridge_msgs::RunPythonFile::Response& res)
   {
+    while(! mutex_->try_lock() ){}
     interpreter_.runPythonFile(req.input, res.result);
+    mutex_->unlock();
     return true;
   }
 
@@ -48,12 +54,16 @@ namespace dynamicgraph
    std::string &out, 
    std::string &err)
   {
+    while(! mutex_->try_lock() ){}
     interpreter_.python(command, result, out, err);
+    mutex_->unlock();
   }
 
   void Interpreter::runPythonFile( std::string ifilename,
                                    std::string &err){
+      while(! mutex_->try_lock() ){}
       interpreter_.runPythonFile(ifilename, err);
+      mutex_->unlock();
   }
 
 } // end of namespace dynamicgraph.

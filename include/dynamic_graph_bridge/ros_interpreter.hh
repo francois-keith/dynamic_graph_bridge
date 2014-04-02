@@ -4,6 +4,7 @@
 # include <dynamic_graph_bridge_msgs/RunCommand.h>
 # include <dynamic_graph_bridge_msgs/RunPythonFile.h>
 # include <dynamic-graph/python/interpreter.hh>
+# include <boost/interprocess/sync/interprocess_mutex.hpp>
 
 namespace dynamicgraph
 {
@@ -54,6 +55,7 @@ namespace dynamicgraph
     ros::NodeHandle& nodeHandle_;
     ros::ServiceServer runCommandSrv_;
     ros::ServiceServer runPythonFileSrv_;
+    boost::shared_ptr<boost::interprocess::interprocess_mutex> mutex_;
   };
 } // end of namespace dynamicgraph.
 
