@@ -63,5 +63,7 @@ rosmake dynamic_graph_bridge
 # install dynamic_graph_bridge
 cd "$root_dir"
 cd build
+cmake .. -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
+rosmake dynamic_graph_bridge
 make install
 
