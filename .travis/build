@@ -56,12 +56,11 @@ install_dependency stack-of-tasks/sot-dynamic
 install_ros_stack stack-of-tasks/redundant_manipulator_control
 install_dependency laas/jrl_dynamics_urdf
 
+# rosmake and install dynamic_graph_bridge
 cd "$root_dir"
 export ROS_PACKAGE_PATH="$root_dir:$ROS_PACKAGE_PATH"
+rosdep install dynamic_graph_bridge
 rosmake dynamic_graph_bridge
-
-# install dynamic_graph_bridge
-cd "$root_dir"
 cd build
 cmake .. -DCMAKE_INSTALL_PREFIX:STRING="$install_dir"
 rosmake dynamic_graph_bridge
