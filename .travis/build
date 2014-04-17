@@ -59,3 +59,9 @@ install_dependency laas/jrl_dynamics_urdf
 cd "$root_dir"
 export ROS_PACKAGE_PATH="$root_dir:$ROS_PACKAGE_PATH"
 rosmake dynamic_graph_bridge
+
+# install dynamic_graph_bridge
+cd "$root_dir"
+cd build
+make install
+
