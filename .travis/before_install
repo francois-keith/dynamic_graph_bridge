@@ -50,20 +50,11 @@ build_git_dependency()
     echo "--> Compiling $1"
     roscd $1
     # It is a does the repository exist?
-    if [ $? -eq 0 ]; then
-      if [ -e manifest.xml ]; then
-        catkin_make --pkg $1
-        catkin_lint $1
-      elif [ -e packages.xml ]; then
-        rosmake $1
-      fi
-    else
       mkdir -p "$build_dir/$1"
       cd "$build_dir"
       $git_clone "git://github.com/$1" "$1"
       cd "$build_dir/$1"
       make install || make
-    fi
 }
 
 # Check if we are in a debian branch...
@@ -167,7 +158,8 @@ else
 
     # and we build directly dependencies from the Git repository
     if [ ! "${ROS_GIT_DEPENDENCIES}" -eq "" ]; then
-      cd ~/src
+      CATKIN_WORKSPACE=$build_dir/..
+      cd $CATKIN_WORKSPACE/src
       wstool init
       for package in ${ROS_GIT_DEPENDENCIES}; do
         rep="${package##*/}"
