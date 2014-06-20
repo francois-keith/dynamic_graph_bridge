@@ -48,13 +48,12 @@ env
 build_git_dependency()
 {
     echo "--> Compiling $1"
-    roscd $1
     # It is a does the repository exist?
-      mkdir -p "$build_dir/$1"
-      cd "$build_dir"
-      $git_clone "git://github.com/$1" "$1"
-      cd "$build_dir/$1"
-      make install || make
+    mkdir -p "$build_dir/$1"
+    cd "$build_dir"
+    $git_clone "git://github.com/$1" "$1"
+    cd "$build_dir/$1"
+    make install || make
 }
 
 # Check if we are in a debian branch...
