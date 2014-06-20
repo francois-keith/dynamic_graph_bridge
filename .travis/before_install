@@ -45,6 +45,25 @@ env
 # --------------------
 #
 # Build a dependency directly from the Git development tree.
+catkin_git_dependency()
+{
+    _string=$1
+    git_dep=${_string%%:*}
+    git_dep_branch=${_string##*:}
+    if [ "$git_dep_branch" == "$git_dep" ]; then
+	git_dep_branch="master"
+    fi
+    echo "--> Getting $git_dep (branch $git_dep_branch)"
+    CATKIN_WORKSPACE=$build_dir/..
+    cd $CATKIN_WORKSPACE/src
+    $git_clone -b $git_dep_branch "git://github.com/$git_dep" "$git_dep"
+}
+
+
+# build_git_dependency
+# --------------------
+#
+# Build a dependency directly from the Git development tree.
 build_git_dependency()
 {
     _string=$1
@@ -164,12 +183,8 @@ else
 
     # and we build directly dependencies from the Git repository
     if `! test x${ROS_GIT_DEPENDENCIES} = x`; then
-      CATKIN_WORKSPACE=$build_dir/..
-      cd $CATKIN_WORKSPACE/src
-      wstool init
       for package in ${ROS_GIT_DEPENDENCIES}; do
-        rep="${package##*/}"
-        wstool set $rep --git https://github.com/${package}
+        catkin_git_dependency "$package"
       done
     fi
 
