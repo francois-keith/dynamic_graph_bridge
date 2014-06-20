@@ -25,5 +25,5 @@ branches:
 script: ./.travis/run build
 after_success: ./.travis/run after_success
 after_failure: ./.travis/run after_failure
-before_install: ./.travis/run dependencies/catkin ./.travis/run before_install
+before_install: ./.travis/run dependencies/catkin; ./.travis/run before_install
 
