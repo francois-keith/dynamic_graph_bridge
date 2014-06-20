@@ -10,6 +10,8 @@ branches:
   - master
   - groovy
   - groovy_rebased
+  - catkin
+  - travis
 script: ./.travis/build
 before_install: ./.travis/before_install
 
