@@ -156,7 +156,7 @@ else
     fi
 
     # and we build directly dependencies from the Git repository
-    if [ ! "${ROS_GIT_DEPENDENCIES}" -eq "" ]; then
+    if `! test x${ROS_GIT_DEPENDENCIES} = x`; then
       CATKIN_WORKSPACE=$build_dir/..
       cd $CATKIN_WORKSPACE/src
       wstool init
