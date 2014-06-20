@@ -37,10 +37,12 @@ sudo apt-get install -qq	\
 
 
 sudo apt-get install -qq		\
+    ros-$ROS_VERSION-angles  \
     ros-$ROS_VERSION-common-msgs	\
     ros-$ROS_VERSION-control-msgs	\
     ros-$ROS_VERSION-realtime-tools	\
     ros-$ROS_VERSION-resource-retriever	\
+    ros-$ROS_VERSION-robot-state-publisher \
     ros-$ROS_VERSION-ros-base		\
     ros-$ROS_VERSION-rosdoc-lite		\
     ros-$ROS_VERSION-tf			\
