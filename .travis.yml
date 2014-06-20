@@ -11,7 +11,7 @@ env:
   - GIT_DEPENDENCIES="jrl-umi3218/jrl-mathtools jrl-umi3218/jrl-mal laas/abstract-robot-dynamics jrl-umi3218/jrl-dynamics
     stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
     stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic laas/jrl_dynamics_urdf"
-  - ROS_GIT_DEPENDENCIES="stack-of-tasks/dynamic_graph_bridge_msgs"
+  - ROS_GIT_DEPENDENCIES="francois-keith/dynamic_graph_bridge_msgs:catkin"
 notifications:
   email:
   - francois.keith@gmail.com
