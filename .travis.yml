@@ -1,0 +1,29 @@
+language: cpp
+compiler: gcc
+env:
+  global:
+  - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev libeigen3-devliblapack-dev
+    libblas-dev gfortran python-dev python-sphinx python-numpy libbullet-dev
+    ros-hydro-angles ros-hydro-common-msgs ros-hydro-control-msgs 
+    ros-hydro-realtime-tools ros-hydro-resource-retriever
+    ros-hydro-robot-state-publisher ros-hydro-ros-base
+    ros-hydro-rosdoc-lite	ros-hydro-tf ros-hydro-urdf"
+  - GIT_DEPENDENCIES="jrl-umi3218/jrl-mathtools jrl-umi3218/jrl-mal laas/abstract-robot-dynamics jrl-umi3218/jrl-dynamics
+    stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
+    stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic stack-of-tasks/dynamic_graph_bridge_msgs
+    laas/jrl_dynamics_urdf"
+notifications:
+  email:
+  - francois.keith@gmail.com
+branches:
+  only:
+  - master
+  - groovy
+  - groovy_rebased
+  - catkin
+  - travis
+script: ./.travis/run build
+after_success: ./.travis/run after_success
+after_failure: ./.travis/run after_failure
+before_install: ./.travis/run dependencies/catkin ./.travis/run before_install
+
