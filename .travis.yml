@@ -6,8 +6,8 @@ env:
     libblas-dev gfortran python-dev python-sphinx python-numpy libbullet-dev
     ros-hydro-angles ros-hydro-common-msgs ros-hydro-control-msgs 
     ros-hydro-realtime-tools ros-hydro-resource-retriever
-    ros-hydro-robot-state-publisher ros-hydro-ros-base
-    ros-hydro-rosdoc-lite	ros-hydro-tf ros-hydro-urdf"
+    ros-hydro-robot-state-publisher ros-hydro-ros-base ros-hydro-angles
+    ros-hydro-rosdoc-lite	ros-hydro-tf ros-hydro-urdf ros-hydro-urdfdom-py"
   - GIT_DEPENDENCIES="jrl-umi3218/jrl-mathtools jrl-umi3218/jrl-mal laas/abstract-robot-dynamics jrl-umi3218/jrl-dynamics
     stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
     stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic laas/jrl_dynamics_urdf"
