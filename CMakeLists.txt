@@ -24,7 +24,7 @@ project(dynamic_graph_bridge)
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation std_srvs geometry_msgs sensor_msgs tf realtime_tools dynamic_graph_bridge_msgs)
 find_package(Boost REQUIRED COMPONENTS program_options)
 
-catkin_package(CATKIN_DEPENDS message_runtime)
+catkin_package(CATKIN_DEPENDS message_runtime dynamic_graph_bridge_msgs)
 
 
 ## LAAS cmake submodule part
