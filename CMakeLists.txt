@@ -143,6 +143,7 @@ add_executable(geometric_simu src/geometric_simu.cpp src/sot_loader.cpp)
 pkg_config_use_dependency(geometric_simu roscpp)
 target_link_libraries(geometric_simu  ${Boost_LIBRARIES} dl)
 
+include_directories(include ${catkin_INCLUDE_DIRS})
 add_subdirectory(src)
 
 #install ros executables
