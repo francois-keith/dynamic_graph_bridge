@@ -12,14 +12,6 @@
   <license>LGPL</license>
   <url>http://ros.org/wiki/dynamic_graph_bridge</url>
 
-  <export>
-    <cpp
-       cflags="-I${prefix}/include"
-       lflags="-L${prefix}/lib -lros_bridge -lros_interpreter -Wl,-rpath,${prefix}/lib"
-       />
-    <rosdoc config="rosdoc.yaml" />
-  </export>
-
   <buildtool_depend>catkin</buildtool_depend> 
 
   <build_depend>std_msgs</build_depend>

@@ -24,7 +24,12 @@ project(dynamic_graph_bridge)
 find_package(catkin REQUIRED COMPONENTS roscpp rospy std_msgs message_generation std_srvs geometry_msgs sensor_msgs tf realtime_tools dynamic_graph_bridge_msgs)
 find_package(Boost REQUIRED COMPONENTS program_options)
 
-catkin_package(CATKIN_DEPENDS message_runtime dynamic_graph_bridge_msgs)
+catkin_package(
+ INCLUDE_DIRS include
+ LIBRARIES ros_bridge ros_interpreter 
+ CATKIN_DEPENDS message_runtime dynamic_graph_bridge_msgs
+)
+
 
 
 ## LAAS cmake submodule part
@@ -45,10 +50,6 @@ include(cmake/python.cmake)
 
 SETUP_PROJECT()
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
-set(CMAKE_INSTALL_RPATH "${LIBRARY_OUTPUT_PATH}")
-set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${LIBRARY_OUTPUT_PATH}")
 set(PKG_CONFIG_ADDITIONAL_VARIABLES
   ${PKG_CONFIG_ADDITIONAL_VARIABLES}
   plugindirname
@@ -76,12 +77,10 @@ install(TARGETS ros_bridge DESTINATION lib)
 
 # Make sure rpath are preserved during the install as ROS dependencies
 # are not installed.
-set_target_properties(ros_bridge PROPERTIES BUILD_WITH_INSTALL_RPATH True
-                      LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set_target_properties(ros_bridge PROPERTIES BUILD_WITH_INSTALL_RPATH True)
 
 macro(compile_plugin NAME)
-  message(lib path ${LIBRARY_OUTPUT_PATH})
-  file(MAKE_DIRECTORY "${LIBRARY_OUTPUT_PATH}/dynamic_graph/ros/${NAME}")
+  file(MAKE_DIRECTORY "${PROJECT_BINARY_DIR}/lib/dynamic_graph/ros/${NAME}")
   add_library(${NAME} src/${NAME}.cpp src/${NAME}.hh)
   pkg_config_use_dependency(${NAME} jrl-mal)
   pkg_config_use_dependency(${NAME} dynamic-graph)
@@ -124,8 +123,7 @@ pkg_config_use_dependency(ros_interpreter roscpp)
 
 add_dependencies(ros_interpreter ros_bridge)
 target_link_libraries(ros_interpreter ros_bridge)
-set_target_properties(ros_interpreter PROPERTIES BUILD_WITH_INSTALL_RPATH True
-                      LIBRARY_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/lib)
+set_target_properties(ros_interpreter PROPERTIES BUILD_WITH_INSTALL_RPATH True)
 message(cmakeinstalllibdir ${CMAKE_INSTALL_LIBDIR} )
 install(TARGETS ros_interpreter DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
@@ -148,9 +146,9 @@ add_subdirectory(src)
 
 #install ros executables
 install(PROGRAMS
-  ${CMAKE_SOURCE_DIR}/scripts/robot_pose_publisher
-  ${CMAKE_SOURCE_DIR}/scripts/run_command
-  ${CMAKE_SOURCE_DIR}/scripts/tf_publisher
+  ${PROJECT_SOURCE_DIR}/scripts/robot_pose_publisher
+  ${PROJECT_SOURCE_DIR}/scripts/run_command
+  ${PROJECT_SOURCE_DIR}/scripts/tf_publisher
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
   )
 SETUP_PROJECT_FINALIZE()
