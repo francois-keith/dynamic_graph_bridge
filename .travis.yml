@@ -12,6 +12,7 @@ env:
     stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
     stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic laas/jrl_dynamics_urdf"
   - ROS_GIT_DEPENDENCIES="francois-keith/dynamic_graph_bridge_msgs:catkin"
+  - ALLOW_CATKINLINT_FAILURE=true
 notifications:
   email:
   - francois.keith@gmail.com
