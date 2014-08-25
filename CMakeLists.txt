@@ -92,6 +92,7 @@ macro(compile_plugin NAME)
   install(TARGETS ${NAME} DESTINATION lib)
   
 
+  file(MAKE_DIRECTORY ${CATKIN_DEVEL_PREFIX}/lib/dynamic_graph/ros/${NAME})
   dynamic_graph_python_module("ros/${NAME}"
     ${NAME}
     ros/${NAME}/wrap
