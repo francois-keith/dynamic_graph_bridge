@@ -4,14 +4,14 @@ env:
   global:
   - APT_DEPENDENCIES="doxygen doxygen-latex libboost-all-dev libeigen3-dev liblapack-dev
     libblas-dev gfortran python-dev python-sphinx python-numpy libbullet-dev
-    ros-hydro-angles ros-hydro-common-msgs ros-hydro-control-msgs 
-    ros-hydro-realtime-tools ros-hydro-resource-retriever
-    ros-hydro-robot-state-publisher ros-hydro-ros-base ros-hydro-angles
-    ros-hydro-rosdoc-lite	ros-hydro-tf ros-hydro-urdf ros-hydro-urdfdom-py"
+    ros-groovy-angles ros-groovy-common-msgs ros-groovy-control-msgs 
+    ros-groovy-realtime-tools ros-groovy-resource-retriever
+    ros-groovy-robot-state-publisher ros-groovy-ros-base ros-groovy-angles
+    ros-groovy-rosdoc-lite	ros-groovy-tf ros-groovy-urdf ros-groovy-urdfdom-py"
   - GIT_DEPENDENCIES="jrl-umi3218/jrl-mathtools jrl-umi3218/jrl-mal laas/abstract-robot-dynamics jrl-umi3218/jrl-dynamics
     stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
     stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic laas/jrl_dynamics_urdf"
-  - ROS_VERSION=hydro
+  - ROS_VERSION=groovy
   - ROS_GIT_DEPENDENCIES="francois-keith/dynamic_graph_bridge_msgs:catkin"
   - ALLOW_CATKINLINT_FAILURE=true
 notifications:
@@ -23,6 +23,7 @@ branches:
   - groovy
   - groovy_rebased
   - catkin
+  - catkin_groovy
   - travis
 script: ./.travis/run build
 after_success: ./.travis/run after_success
