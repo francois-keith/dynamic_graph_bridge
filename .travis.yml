@@ -20,7 +20,7 @@ env:
     stack-of-tasks/dynamic-graph stack-of-tasks/dynamic-graph-python stack-of-tasks/sot-core
     stack-of-tasks/sot-tools stack-of-tasks/sot-dynamic 
     francois-keith/jrl_dynamics_urdf:topic/fixed_joints"
-  - ROS_VERSION=hydro
+  - ROS_DISTRO=hydro
   - ROS_GIT_DEPENDENCIES="francois-keith/dynamic_graph_bridge_msgs:catkin"
   - ALLOW_CATKINLINT_FAILURE=true
 notifications:
